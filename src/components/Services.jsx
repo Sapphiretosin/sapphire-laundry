@@ -1,25 +1,20 @@
-import React, { useContext } from "react";
+// src/components/Services.jsx
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaTshirt,
-  FaTruckPickup,
-  FaBroom,
-  FaHandsWash,
-  FaHotel,
-} from "react-icons/fa";
+import { FaTshirt, FaTruckPickup, FaBroom, FaHandsWash, FaHotel } from "react-icons/fa";
 import { MdIron } from "react-icons/md";
-import { CartContext } from "../context/CartContext";
+import { useCart } from "../context/CartContext";
 
-// 🖼️ Import images
-import laundry from "../assets/laundry-service.jpg";
-import drycleaning from "../assets/drycleaning.jpg";
-import ironing from "../assets/ironing.jpg";
-import pickup from "../assets/pickup.jpg";
-import commercial from "../assets/commercial-laundry.jpg";
-import folding from "../assets/folding.jpg";
+// Sapphire-branded Images
+import laundry from "../assets/sapphire3.jpg"; 
+import drycleaning from "../assets/sapphire5.jpg";
+import ironing from "../assets/sapphire4.jpg";
+import delivery from "../assets/sapphire2.jpg";
+import commercial from "../assets/sapphire3.jpg";
+import folding from "../assets/sapphire1.jpg";
 
 const Services = () => {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCart();
 
   const services = [
     {
@@ -27,48 +22,42 @@ const Services = () => {
       icon: <FaHandsWash size={35} className="text-blue-600" />,
       title: "Laundry Service",
       price: 2500,
-      description:
-        "We provide top-quality washing and folding services, ensuring your clothes are fresh, clean, and well cared for.",
+      description: "Top-quality washing and folding services for your clothes.",
     },
     {
       image: drycleaning,
       icon: <FaBroom size={35} className="text-blue-600" />,
       title: "Dry Cleaning",
       price: 3000,
-      description:
-        "Our eco-friendly dry cleaning keeps your garments spotless and gentle on fabrics while protecting the environment.",
+      description: "Eco-friendly dry cleaning keeping your garments spotless.",
     },
     {
       image: ironing,
       icon: <MdIron size={35} className="text-blue-600" />,
       title: "Ironing Service",
       price: 1500,
-      description:
-        "Get that crisp, professional finish with our expert ironing services — perfect for all your outfits.",
+      description: "Crisp professional finish for all your outfits.",
     },
     {
-      image: pickup,
+      image: delivery,
       icon: <FaTruckPickup size={35} className="text-blue-600" />,
       title: "Pickup & Delivery",
       price: 500,
-      description:
-        "We offer free pickup and delivery, saving you time and giving you one less thing to worry about.",
+      description: "Free pickup & delivery, saving you time.",
     },
     {
       image: commercial,
       icon: <FaHotel size={35} className="text-blue-600" />,
       title: "Commercial Laundry",
       price: 10000,
-      description:
-        "Reliable laundry solutions for hotels, gyms, restaurants, and offices — efficient and affordable.",
+      description: "Reliable laundry for hotels, gyms, restaurants, offices.",
     },
     {
       image: folding,
       icon: <FaTshirt size={35} className="text-blue-600" />,
       title: "Folding Service",
       price: 1000,
-      description:
-        "We fold your laundry neatly so it’s ready to be stored or worn right away. Clean, crisp, and organized.",
+      description: "Neatly folded laundry ready to store or wear.",
     },
   ];
 
@@ -93,7 +82,6 @@ const Services = () => {
         >
           Our Services
         </motion.h2>
-
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +89,7 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-gray-600 max-w-2xl mx-auto"
         >
-          We are dedicated to making your life easier by providing professional laundry and dry-cleaning services — fast, reliable, and affordable.
+          Professional laundry and dry-cleaning services — fast, reliable, and affordable.
         </motion.p>
       </div>
 
@@ -114,9 +102,8 @@ const Services = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             custom={index}
-            className="bg-white rounded-3xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:-translate-y-2 transition duration-500"
+            className="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:scale-105 transition duration-500"
           >
-            {/* Image Section */}
             <div className="relative w-full h-52 overflow-hidden">
               <img
                 src={service.image}
@@ -126,7 +113,6 @@ const Services = () => {
               <div className="absolute inset-0 bg-black/20"></div>
             </div>
 
-            {/* Content Section */}
             <div className="p-8 text-center">
               <div className="mb-4 flex justify-center">{service.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h3>

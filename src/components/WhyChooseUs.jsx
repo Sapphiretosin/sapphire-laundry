@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 // 🖼️ Import images
 import experience from "../assets/experience.jpg";
-import convenience from "../assets/convenience.jpg";
-import express from "../assets/express-delivery.jpg";
+import convenience from "../assets/app.jpg";
+import express from "../assets/deliveryjet2.jpg";
 import prices from "../assets/prices.jpg";
 import order from "../assets/order.jpg";
 import assurance from "../assets/assurance.jpg";

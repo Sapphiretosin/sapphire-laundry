@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.css";
-import Hero1 from "../assets/download66.png";
-import Hero2 from "../assets/download77.png";
-import Hero3 from "../assets/download88.png";
-import Hero4 from "../assets/download99.png";
+import hero1 from "../assets/hero1.png";
+import hero2 from "../assets/hero2.png";
+import hero3 from "../assets/hero3.png";
+import hero4 from "../assets/hero4.png";
 
 const heroPairs = [
   [
-    { img: Hero1, title: "Laundry Service", desc: "We care for the clothes you wear." },
-    { img: Hero2, title: "Dry Cleaning", desc: "Cleaning excellence guaranteed." },
+    { img: hero1, title: "Laundry Service", desc: "We care for the clothes you wear." },
+    { img: hero2, title: "Dry Cleaning", desc: "Cleaning excellence guaranteed." },
   ],
   [
-    { img: Hero3, title: "Ironing Service", desc: "Crisp clothes every time." },
-    { img: Hero4, title: "Pickup & Delivery", desc: "Convenient and fast." },
+    { img: hero3, title: "Ironing Service", desc: "Crisp clothes every time." },
+    { img: hero4, title: "Pickup & Delivery", desc: "Convenient and fast." },
   ],
 ];
 
@@ -85,23 +85,6 @@ const Hero = () => {
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">{item.title}</h1>
                 <p className="text-lg md:text-xl mb-6">{item.desc}</p>
 
-                {/* Modern Order Now Button */}
-                <Link to="/order" className="group relative inline-block">
-                  <motion.button
-                    className="relative px-6 md:px-6 py-2 md:py-3 text-base md:text-lg font- rounded-full -lg text-white shadow-lg bg-blue-700 transition- overflow-hidden"
-                   
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {/* Left overlay */}
-                    <span className="absolute top-0 left-0 h-full w-1/2 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-                    
-                    {/* Right overlay */}
-                    <span className="absolute top-0 right-0 h-full w-1/2 bg-white/20 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-                    
-                    {/* Button text */}
-                    <span className="relative z-10">Order Now</span>
-                  </motion.button>
-                </Link>
               </motion.div>
             </div>
           ))}

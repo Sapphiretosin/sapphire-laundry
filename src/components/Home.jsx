@@ -1,8 +1,8 @@
 import React from "react";
 
-// Components in the same folder
+// Components
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 import Hero from "./Hero";
 import Experience from "./Experience";
 import Services from "./Services";
@@ -17,10 +17,11 @@ import Prices from "./Prices";
 import AppPromo from "./Apppromo";
 import Testimony from "./Testimony";
 import PricePackages from "./PricePackages";
-import ContactBanner from "./ContactBanner";
-import StickyCallBar from "./StickyCallBar";
+import DeliveryServices from "./DeliveryService";
 import LocationPicker from "./LocationPicker";
 import Blog from "./Blog";
+
+
 function Home() {
   return (
     <div>
@@ -38,9 +39,10 @@ function Home() {
       <AppPromo />
       <Testimony />
       <PricePackages />
-      <ContactBanner />
-      <StickyCallBar />
+     <DeliveryServices />
+  
       <LocationPicker />
+     
     </div>
   );
 }

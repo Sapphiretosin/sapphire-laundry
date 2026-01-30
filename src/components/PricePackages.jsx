@@ -16,7 +16,7 @@ const packages = [
       "1 Towel",
       "1 Set of Sheets",
     ],
-    price: "€349.00",
+    price: "€30.00",
     highlighted: false,
   },
   {
@@ -32,7 +32,7 @@ const packages = [
       "2 Towels",
       "2 Sets of Sheets",
     ],
-    price: "€399.00",
+    price: "€50.00",
     highlighted: false,
   },
   {
@@ -48,8 +48,8 @@ const packages = [
       "2 Towels",
       "2 Sets of Sheets",
     ],
-    price: "€449.00",
-    oldPrice: "€549.00",
+    price: "€80.00",
+    oldPrice: "€100.00",
     highlighted: true,
   },
 ];

@@ -1,25 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // ✅ Import at top
 
-// 🖼️ Import images
-import salon from "../assets/salon.jpg";
-import restaurants from "../assets/restaurant.jpg";
-import church from "../assets/church.jpg";
-import playground from "../assets/playground.jpg";
-import nursing from "../assets/nursing.jpg";
-import hotel from "../assets/hotel.jpg";
-import nail from "../assets/nail.jpg";
-import gym from "../assets/gym.jpg";
+
+// Images
+import sapphirebank from "../assets/sapphire bank.jpg";
+import  sapphirechurch from "../assets/sapphire church.jpg";
+import sapphirespa from "../assets/sapphire spa.jpg";
+import sapphirepark from "../assets/sapphire park.jpg";
+import sapphirerestaurant from "../assets/sapphire restaurant.jpg";
+import sapphiregym from "../assets/sapphire gym.jpg";
+import sapphirehotel from "../assets/sapphire hotel.jpg";
+import sapphirehospital from "../assets/sapphire hospital.jpg";
 
 const clients = [
-  { image: salon, title: "Salons & Spas" },
-  { image: restaurants, title: "Restaurants & Caterers" },
-  { image: church, title: "Religious Organizations" },
-  { image: playground, title: "Daycare Centers" },
-  { image: nursing, title: "Assisted Living / Nursing Homes" },
-  { image: hotel, title: "Hotels & Motels" },
-  { image: nail, title: "Nail Salons" },
-  { image: gym, title: "Athletic Facilities / Gyms" },
+ { image: sapphirebank, title: "Banks & Financial Services", price: 5000 },
+  { image: sapphirerestaurant, title: "Restaurants & Caterers", price: 8000 },
+  { image: sapphirechurch, title: "Churches & Places of Worship", price: 9000 },
+  { image: sapphiregym, title: "Gyms & Fitness Centers", price: 7000 },
+  { image: sapphirehotel, title: "Hotels & Lodging", price: 10000 },
+  { image: sapphirespa, title: "Spas & Salons", price: 6000 },
+  { image: sapphirepark, title: "Parks & Recreational Facilities", price: 7500 },
+  { image: sapphirehospital, title: "Hospitals & Clinics", price: 12000 },
 ];
 
 // Variants for fade-up animation
@@ -104,15 +106,12 @@ const CommercialLaundry = () => {
               variants={fadeUp}
               className="relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer"
             >
-              {/* Image with hover zoom */}
               <motion.img
                 src={client.image}
                 alt={client.title}
                 className="w-full h-56 object-cover transform transition duration-700"
                 whileHover={{ scale: 1.1 }}
               />
-
-              {/* Overlay */}
               <motion.div
                 className="absolute inset-0 bg-black/40 flex justify-center items-center opacity-0"
                 whileHover={{ opacity: 1 }}
@@ -134,9 +133,11 @@ const CommercialLaundry = () => {
           viewport={{ once: true }}
           className="mt-12"
         >
-          <button className="bg-blue-600 text-white px-10 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-2xl">
-            Get Service Now
-          </button>
+          <Link to="/commercial-services">
+            <button className="bg-blue-600 text-white px-10 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-2xl">
+              Get Service Now
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

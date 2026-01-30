@@ -1,5 +1,5 @@
 import React from "react";
-import passionate from "../assets/passionate.jpeg";
+import blog4 from "../assets/blog4.jpg";
 import { FaLeaf, FaTruck, FaDollarSign, FaPhoneAlt, FaStar } from "react-icons/fa";
 
 const Experience = () => {
@@ -69,7 +69,7 @@ const Experience = () => {
         {/* Image Side */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <img
-            src={passionate}
+            src={blog4}
             alt="Laundry Experience"
             className="rounded-2xl shadow-xl w-full sm:w-4/5 md:w-full object-cover"
           />

@@ -1,49 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
-  {
-    name: "Grace E.",
-    role: "Fashion Designer",
-    image: "https://randomuser.me/api/portraits/women/45.jpg",
-    quote:
-      "Sapphire Laundry saves me every week! My clothes always come back fresh, pressed, and perfectly folded. I love how easy the app is to use.",
-  },
-  {
-    name: "Michael T.",
-    role: "Entrepreneur",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    quote:
-      "I used to dread laundry day — now it’s just a tap on my phone. The express delivery is truly a lifesaver. Highly recommended!",
-  },
-  {
-    name: "Brenda A.",
-    role: "Banker",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-    quote:
-      "Affordable, reliable, and professional. I love the instant order updates and how they treat every piece of clothing with care.",
-  },
-  {
-    name: "Evans L.",
-    role: "Restaurant Manager",
-    image: "https://randomuser.me/api/portraits/men/41.jpg",
-    quote:
-      "Running a restaurant means uniforms everywhere — Sapphire Laundry keeps my staff looking sharp and saves me hours every week.",
-  },
-  {
-    name: "Bianca K.",
-    role: "Event Planner",
-    image: "https://randomuser.me/api/portraits/women/29.jpg",
-    quote:
-      "Their attention to detail is incredible. From removing stains to packaging, everything feels premium. Totally worth it!",
-  },
-  {
-    name: "Tunde B.",
-    role: "Tech Consultant",
-    image: "https://randomuser.me/api/portraits/men/64.jpg",
-    quote:
-      "The express delivery blew my mind — picked up in the morning, delivered fresh before evening. Sapphire Laundry is my go-to service.",
-  },
+  { name: "Chinonso Okafor", role: "Fashion Designer", image: "https://randomuser.me/api/portraits/men/91.jpg", quote: "Sapphire Laundry saves me every week! My clothes always come back fresh, pressed, and perfectly folded. I love how easy the app is to use." },
+  { name: "Amaka Eze", role: "Entrepreneur", image: "https://randomuser.me/api/portraits/women/65.jpg", quote: "I used to dread laundry day — now it’s just a tap on my phone. The express delivery is truly a lifesaver. Highly recommended!" },
+  { name: "Tunde Balogun", role: "Banker", image: "https://randomuser.me/api/portraits/men/56.jpg", quote: "Affordable, reliable, and professional. I love the instant order updates and how they treat every piece of clothing with care." },
+  { name: "Ngozi Obi", role: "Restaurant Manager", image: "https://randomuser.me/api/portraits/women/44.jpg", quote: "Running a restaurant means uniforms everywhere — Sapphire Laundry keeps my staff looking sharp and saves me hours every week." },
+  { name: "Emeka Adewale", role: "Event Planner", image: "https://randomuser.me/api/portraits/men/79.jpg", quote: "Their attention to detail is incredible. From removing stains to packaging, everything feels premium. Totally worth it!" },
+  { name: "Zoe Mensah", role: "Tech Consultant", image: "https://randomuser.me/api/portraits/women/50.jpg", quote: "The express delivery blew my mind — picked up in the morning, delivered fresh before evening. Sapphire Laundry is my go-to service." },
+  { name: "Ifeanyi Chukwu", role: "Teacher", image: "https://randomuser.me/api/portraits/men/70.jpg", quote: "Sapphire Laundry saved me so much time! Excellent service." },
+  { name: "Fatou Diop", role: "Marketing Manager", image: "https://randomuser.me/api/portraits/women/72.jpg", quote: "The team is reliable, quick, and trustworthy. Love their work!" },
+  { name: "Ngozi Uche", role: "Nurse", image: "https://randomuser.me/api/portraits/women/33.jpg", quote: "Professional service and amazing quality. I am very satisfied." },
+  { name: "Chuka Nnaji", role: "Photographer", image: "https://randomuser.me/api/portraits/men/38.jpg", quote: "Sapphire Laundry makes my busy life so much easier. Clothes come back perfect every time." },
+
+  // Intercontinental customers
+  { name: "Sophia Martinez", role: "Graphic Designer", image: "https://randomuser.me/api/portraits/women/21.jpg", quote: "The service is seamless and reliable. Perfect for a busy lifestyle." },
+  { name: "Liam Johnson", role: "Software Engineer", image: "https://randomuser.me/api/portraits/men/14.jpg", quote: "Fast, professional, and my clothes look amazing. Highly recommend Sapphire Laundry!" },
+  { name: "Isabella Rossi", role: "Entrepreneur", image: "https://randomuser.me/api/portraits/women/12.jpg", quote: "Exceptional attention to detail and timely delivery every time." },
+  { name: "Noah Schmidt", role: "Teacher", image: "https://randomuser.me/api/portraits/men/22.jpg", quote: "I can finally relax on weekends. Sapphire Laundry takes care of everything!" },
+  { name: "Aaliyah Khan", role: "Consultant", image: "https://randomuser.me/api/portraits/women/9.jpg", quote: "Reliable, professional, and excellent quality. Truly global service." },
+  { name: "Mateo Lopez", role: "Chef", image: "https://randomuser.me/api/portraits/men/5.jpg", quote: "From pick-up to delivery, everything is seamless. Clothes always look great." },
+  { name: "Olivia Brown", role: "Writer", image: "https://randomuser.me/api/portraits/women/11.jpg", quote: "Convenient, fast, and trustworthy. Sapphire Laundry never disappoints." },
+  { name: "Ethan Clark", role: "Musician", image: "https://randomuser.me/api/portraits/men/6.jpg", quote: "Professional, fast, and always with a smile. Great global service!" },
+  { name: "Nina Patel", role: "Architect", image: "https://randomuser.me/api/portraits/women/13.jpg", quote: "Effortless and professional. Sapphire Laundry is a lifesaver." },
+  { name: "Aiden Taylor", role: "Engineer", image: "https://randomuser.me/api/portraits/men/8.jpg", quote: "Fast delivery, excellent results. I will keep using this service forever." }
 ];
 
 const Testimonials = () => {

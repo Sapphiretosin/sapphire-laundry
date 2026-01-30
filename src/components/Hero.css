@@ -58,3 +58,7 @@
 .order-btn:hover {
   transform: scale(1.05);
 }
+
+.leaflet-container {
+  z-index: 0;
+}

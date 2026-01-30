@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import iphone from "../assets/iphone-laundry.jpg"; 
+import iphone from "../assets/app.jpg"; 
 
 const AppPromo = () => {
   return (

@@ -1,46 +1,60 @@
-import React, { createContext, useState, useEffect } from "react";
+// src/context/CartContext.jsx
+import React, { createContext, useContext, useState } from "react";
 
-export const CartContext = createContext();
+// Create context
+const CartContext = createContext();
 
+// Provider component
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(() => {
-    const saved = localStorage.getItem("sapphireCart");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [cart, setCart] = useState([]);
+  const [user, setUser] = useState(null); // optional: track logged-in user
 
-  useEffect(() => {
-    localStorage.setItem("sapphireCart", JSON.stringify(cart));
-  }, [cart]);
-
-  const addToCart = (order) => {
-    const now = new Date();
-    const earliest = new Date(now);
-    const latest = new Date(now);
-    earliest.setDate(now.getDate() + 4);
-    latest.setDate(now.getDate() + 7);
-
-    const newOrder = {
-      id: Date.now(),
-      name: order.name,
-      price: order.price,
-      orderDate: now.toLocaleString(),
-      deliveryRange: `${earliest.toLocaleDateString()} - ${latest.toLocaleDateString()}`,
-    };
-
-    setCart((prev) => [...prev, newOrder]);
+  // Add item to cart
+  const addToCart = (item) => {
+    const exists = cart.find((i) => i.title === item.title);
+    if (exists) {
+      setCart(
+        cart.map((i) =>
+          i.title === item.title ? { ...i, quantity: i.quantity + 1 } : i
+        )
+      );
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
   };
 
+  // Remove item from cart
   const removeFromCart = (index) => {
-    setCart((prev) => prev.filter((_, i) => i !== index));
+    setCart(cart.filter((_, i) => i !== index));
   };
 
+  // Update quantity
+  const updateQuantity = (index, quantity) => {
+    if (quantity < 1) return;
+    setCart(
+      cart.map((item, i) => (i === index ? { ...item, quantity } : item))
+    );
+  };
+
+  // Clear cart
   const clearCart = () => setCart([]);
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        user,
+        setUser,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
+
+// Custom hook
+export const useCart = () => useContext(CartContext);
