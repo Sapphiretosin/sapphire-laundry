@@ -73,7 +73,7 @@ export default function CheckoutPage() {
             alert("Payment verification failed: " + res.data.message);
           }
         } catch (err) {
-          alert("Error verifying payment: " + err.message);
+          alert("Error verifying payment: " + (err.response?.data?.message || err.message));
         }
       },
       onClose: function () {
@@ -84,7 +84,7 @@ export default function CheckoutPage() {
     handler.openIframe();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.phone || !formData.address) {
@@ -112,21 +112,46 @@ export default function CheckoutPage() {
       return;
     }
 
-    // Bank or USSD
-    let paymentMessage = "";
-    if (paymentMethod === "bank") {
-      paymentMessage = `Please make a bank transfer to:
+    // Bank or USSD flow
+    try {
+      const orderDetails = {
+        ...formData,
+        cart,
+        comment,
+        paymentMethod,
+        outletId: selectedOutlet?._id || selectedOutlet?.id,
+        paymentStatus: "pending"
+      };
+
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        "http://localhost:5000/api/orders",
+        orderDetails,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      if (res.data.success) {
+        let paymentMessage = "";
+        if (paymentMethod === "bank") {
+          paymentMessage = `\n\nPlease make a bank transfer to:
 BANK: Zenith Bank
 ACCOUNT NAME: Sapphire Laundromart
 ACCOUNT NUMBER: 1234567890`;
-    } else if (paymentMethod === "ussd") {
-      paymentMessage = `Dial this USSD code to make payment:
+        } else if (paymentMethod === "ussd") {
+          paymentMessage = `\n\nDial this USSD code to make payment:
 *737*1*${calculateTotal()}*1234567890#`;
-    }
+        }
 
-    alert("Order submitted successfully!\n\n" + paymentMessage);
-    setSubmitted(true);
-    resetForm();
+        alert("Order submitted successfully!" + paymentMessage);
+        setSubmitted(true);
+        clearCart();
+        resetForm();
+      }
+    } catch (err) {
+      alert("Error submitting order: " + (err.response?.data?.message || err.message));
+    }
   };
 
   const resetForm = () => {
