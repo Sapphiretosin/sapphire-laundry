@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"; // ✅ Import at top
 
 // Images
 import sapphirebank from "../assets/sapphire bank.jpg";
-import  sapphirechurch from "../assets/sapphire church.jpg";
+import sapphirechurch from "../assets/sapphire church.jpg";
 import sapphirespa from "../assets/sapphire spa.jpg";
 import sapphirepark from "../assets/sapphire park.jpg";
 import sapphirerestaurant from "../assets/sapphire restaurant.jpg";
@@ -14,7 +14,7 @@ import sapphirehotel from "../assets/sapphire hotel.jpg";
 import sapphirehospital from "../assets/sapphire hospital.jpg";
 
 const clients = [
- { image: sapphirebank, title: "Banks & Financial Services", price: 5000 },
+  { image: sapphirebank, title: "Banks & Financial Services", price: 5000 },
   { image: sapphirerestaurant, title: "Restaurants & Caterers", price: 8000 },
   { image: sapphirechurch, title: "Churches & Places of Worship", price: 9000 },
   { image: sapphiregym, title: "Gyms & Fitness Centers", price: 7000 },
@@ -44,11 +44,11 @@ const CommercialLaundry = () => {
   return (
     <section
       id="commercial"
-      className="relative py-24 px-6 md:px-16 bg-gradient-to-b from-blue-50 via-white to-blue-50 overflow-hidden"
+      className="relative py-24 px-6 md:px-16 bg-gradient-to-b from-primary/5 via-background to-primary/5 overflow-hidden"
     >
       {/* Floating bubbles */}
       <motion.div
-        className="absolute top-10 left-10 w-24 h-24 bg-blue-300/30 rounded-full blur-3xl"
+        className="absolute top-10 left-10 w-24 h-24 bg-primary/10 rounded-full blur-3xl"
         animate={{ y: [0, 20, 0] }}
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
       />
@@ -65,7 +65,7 @@ const CommercialLaundry = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-blue-700 font-semibold mb-2 uppercase tracking-wide"
+          className="text-primary font-semibold mb-2 uppercase tracking-wide"
         >
           Laundry Service for Your Business!
         </motion.h3>
@@ -134,7 +134,7 @@ const CommercialLaundry = () => {
           className="mt-12"
         >
           <Link to="/commercial-services">
-            <button className="bg-blue-600 text-white px-10 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-2xl">
+            <button className="bg-primary text-primary-foreground px-10 py-3 rounded-full font-semibold hover:bg-primary/90 transition shadow-lg hover:shadow-2xl">
               Get Service Now
             </button>
           </Link>

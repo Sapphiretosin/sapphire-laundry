@@ -12,7 +12,7 @@ const steps = [
   {
     id: "01",
     image: dirty,
-    icon: <FaTshirt size={35} className="text-blue-600" />,
+    icon: <FaTshirt size={35} className="text-primary" />,
     title: "Bag Up All Your Dirty Clothes",
     description:
       "We are pleased to pick up your laundry and ensure that it is expertly laundered, pressed, and handled with care.",
@@ -20,7 +20,7 @@ const steps = [
   {
     id: "02",
     image: van,
-    icon: <FaTruck size={35} className="text-blue-600" />,
+    icon: <FaTruck size={35} className="text-primary" />,
     title: "We Pick Up Your Laundry",
     description:
       "Our friendly drivers arrive on schedule to collect your laundry right from your doorstep — stress-free and reliable.",
@@ -28,7 +28,7 @@ const steps = [
   {
     id: "03",
     image: eco,
-    icon: <FaSoap size={35} className="text-blue-600" />,
+    icon: <FaSoap size={35} className="text-primary" />,
     title: "We Clean with Care",
     description:
       "Your clothes are cleaned using eco-friendly products — protecting both your fabrics and the planet.",
@@ -36,7 +36,7 @@ const steps = [
   {
     id: "04",
     image: delivery,
-    icon: <FaSmile size={35} className="text-blue-600" />,
+    icon: <FaSmile size={35} className="text-primary" />,
     title: "We Deliver Fresh Laundry",
     description:
       "We return your freshly cleaned laundry folded, pressed, and ready to wear — right on time, every time.",
@@ -45,7 +45,7 @@ const steps = [
 
 const HowWeWork = () => {
   return (
-    <section id="how-we-work" className="bg-white py-24 px-6 md:px-16">
+    <section id="how-we-work" className="bg-background py-24 px-6 md:px-16">
       {/* Header Section */}
       <div className="max-w-4xl mx-auto text-center mb-16">
         <motion.h2
@@ -60,7 +60,7 @@ const HowWeWork = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-2xl font-semibold text-blue-600 mb-6"
+          className="text-2xl font-semibold text-primary mb-6"
         >
           How We Work
         </motion.h3>
@@ -69,17 +69,17 @@ const HowWeWork = () => {
           convenient laundry pick-up and delivery. Give yourself one less thing
           to worry about with our professional wash and fold service.
         </p>
-        <p className="text-gray-600 mb-6">
+        <p className="text-muted-foreground mb-6">
           We’ve been in the laundry business for more than{" "}
-          <span className="font-semibold text-blue-600">12 years</span> and
+          <span className="font-semibold text-primary">12 years</span> and
           would love to earn your trust. Try us today and save{" "}
-          <span className="font-semibold text-blue-600">$10</span> off your
+          <span className="font-semibold text-primary">$10</span> off your
           first order of 20 pounds or more!
         </p>
 
         <motion.button
           whileHover={{ scale: 1.05 }}
-          className="bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-700 transition"
+          className="bg-primary text-primary-foreground px-8 py-3 rounded-full shadow-lg hover:bg-primary/90 transition"
         >
           Get Service Now
         </motion.button>
@@ -94,7 +94,7 @@ const HowWeWork = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="bg-gray-50 rounded-3xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden"
+            className="bg-accent rounded-3xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden"
           >
             {/* Image Section */}
             <div className="relative h-48 overflow-hidden">
@@ -104,7 +104,7 @@ const HowWeWork = () => {
                 className="w-full h-full object-cover transform hover:scale-110 transition duration-700"
               />
               <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                 Step {step.id}
               </div>
             </div>
@@ -124,8 +124,8 @@ const HowWeWork = () => {
   );
 };
 
-{/* Marquee / Flowing Text Section */}
-<section className="bg-blue-600 py-3 overflow-hidden relative">
+{/* Marquee / Flowing Text Section */ }
+<section className="bg-primary py-3 overflow-hidden relative">
   <div className="whitespace-nowrap animate-marquee text-white text-lg font-medium flex items-center">
     <span className="mx-8">💳 Pay Online in Seconds</span>
     <span className="mx-8">🌱 Eco-Friendly</span>

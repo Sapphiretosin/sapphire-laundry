@@ -22,18 +22,22 @@ export default function Login() {
       localStorage.setItem("token", res.token);
       localStorage.setItem("user", JSON.stringify(res.user));
 
-      navigate("/dashboard"); // or your desired page
+      if (res.user.role === "SUPER_ADMIN" || res.user.role === "OUTLET_ADMIN") {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (err) {
-    setError(err.response?.data?.message || "Login failed");
+      setError(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
+    <div className="min-h-screen flex justify-center items-center bg-background p-4">
       <div className="bg-white w-full max-w-md p-8 shadow-lg rounded-xl">
-        <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">
+        <h2 className="text-2xl font-bold text-center mb-6 text-primary">
           Sapphire Laundry Login
         </h2>
 
@@ -69,7 +73,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition"
+            className="w-full bg-primary text-primary-foreground py-3 rounded-lg hover:bg-primary/90 transition shadow-md"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -77,7 +81,7 @@ export default function Login() {
 
         <p className="text-center mt-4">
           Don't have an account?{" "}
-          <a href="/register" className="text-blue-600">
+          <a href="/register" className="text-primary hover:underline">
             Register
           </a>
         </p>

@@ -60,7 +60,7 @@ const BlogPost = () => {
 
           {tips.map((tip, idx) => (
             <div key={idx} className="space-y-4">
-              <h2 className="text-2xl font-semibold text-blue-600">
+              <h2 className="text-2xl font-semibold text-primary">
                 {idx + 1}. {tip.title}
               </h2>
               <img src={tip.image} alt={tip.title} className="w-full rounded-lg object-cover" />
@@ -78,7 +78,7 @@ const BlogPost = () => {
               rows={4}
               disabled
             />
-            <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+            <button className="bg-primary text-primary-foreground px-6 py-2 rounded hover:bg-primary/90 transition shadow-md">
               Post Comment
             </button>
           </div>
@@ -88,7 +88,7 @@ const BlogPost = () => {
         <div className="md:col-span-1 space-y-8">
 
           {/* Newsletter Signup */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow space-y-3">
+          <div className="bg-muted p-6 rounded-lg shadow space-y-3">
             <h3 className="text-xl font-semibold">Newsletter Subscribe</h3>
             <p className="text-gray-600">Sign up and receive our special offers.</p>
             <input
@@ -96,17 +96,17 @@ const BlogPost = () => {
               placeholder="Your e-mail address"
               className="w-full border border-gray-300 p-3 rounded"
             />
-            <button className="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
+            <button className="w-full bg-primary text-primary-foreground px-6 py-3 rounded hover:bg-primary/90 transition shadow-md">
               Subscribe
             </button>
           </div>
 
           {/* Categories */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow space-y-3">
+          <div className="bg-muted p-6 rounded-lg shadow space-y-3">
             <h3 className="text-xl font-semibold">Categories</h3>
             <ul className="space-y-2">
               {categories.map((cat, idx) => (
-                <li key={idx} className="text-gray-800 hover:text-blue-600 cursor-pointer">
+                <li key={idx} className="text-foreground hover:text-primary cursor-pointer transition">
                   {cat}
                 </li>
               ))}
@@ -114,11 +114,11 @@ const BlogPost = () => {
           </div>
 
           {/* Tags */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow space-y-3">
+          <div className="bg-muted p-6 rounded-lg shadow space-y-3">
             <h3 className="text-xl font-semibold">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, idx) => (
-                <span key={idx} className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200">
+                <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-primary/20 transition">
                   {tag}
                 </span>
               ))}

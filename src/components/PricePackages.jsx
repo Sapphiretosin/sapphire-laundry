@@ -67,7 +67,7 @@ const PricePackages = () => {
   return (
     <section
       id="pricing"
-      className="py-24 px-6 md:px-16 bg-gradient-to-b from-blue-50 via-white to-blue-50 overflow-hidden"
+      className="py-24 px-6 md:px-16 bg-gradient-to-b from-primary/5 via-background to-primary/5 overflow-hidden"
     >
       {/* Header */}
       <motion.div
@@ -77,7 +77,7 @@ const PricePackages = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h3 className="text-blue-700 font-semibold mb-2 uppercase tracking-wide">
+        <h3 className="text-primary font-semibold mb-2 uppercase tracking-wide">
           What We Offer
         </h3>
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -99,11 +99,10 @@ const PricePackages = () => {
             whileInView="visible"
             viewport={{ once: true }}
             custom={i}
-            className={`relative bg-white rounded-3xl shadow-lg p-10 flex flex-col justify-between transition duration-500 hover:-translate-y-2 ${
-              pkg.highlighted
-                ? "border-4 border-blue-600 shadow-blue-100"
+            className={`relative bg-white rounded-3xl shadow-lg p-10 flex flex-col justify-between transition duration-500 hover:-translate-y-2 ${pkg.highlighted
+                ? "border-4 border-primary shadow-primary/10"
                 : "border border-gray-100"
-            }`}
+              }`}
             animate={{ scale: [1, 1.05, 1] }} // Continuous zoom
             transition={{
               repeat: Infinity,
@@ -114,19 +113,19 @@ const PricePackages = () => {
           >
             {/* Discount Badge */}
             {pkg.highlighted && (
-              <span className="absolute -top-4 right-6 bg-blue-600 text-white text-sm px-4 py-1 rounded-full shadow-md font-medium">
+              <span className="absolute -top-4 right-6 bg-primary text-primary-foreground text-sm px-4 py-1 rounded-full shadow-md font-medium">
                 Best Value
               </span>
             )}
 
             <div>
               <h4 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h4>
-              <p className="text-blue-600 font-medium mb-4">{pkg.clothes}</p>
+              <p className="text-primary font-medium mb-4">{pkg.clothes}</p>
 
               <ul className="space-y-2 mb-6">
                 {pkg.items.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-2 text-gray-600">
-                    <FaCheckCircle className="text-blue-500" size={14} />
+                    <FaCheckCircle className="text-primary" size={14} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -143,7 +142,7 @@ const PricePackages = () => {
               </div>
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                className="px-8 py-3 rounded-full font-semibold transition shadow-lg hover:shadow-2xl bg-blue-600 text-white hover:bg-blue-700"
+                className="px-8 py-3 rounded-full font-semibold transition shadow-lg hover:shadow-2xl bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 Order Now
               </motion.button>

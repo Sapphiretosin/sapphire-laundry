@@ -25,24 +25,24 @@ const posts = [
 
 const Blog = () => {
   return (
-    <section className="py-16 px-6 md:px-12 bg-gray-50 min-h-screen">
+    <section className="py-16 px-6 md:px-12 bg-background min-h-screen">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Blog Posts</h1>
         <div className="flex flex-col gap-10">
           {posts.map((post) => (
-            <div key={post.id} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-              <div className="flex items-center text-gray-500 text-sm mb-2">
+            <div key={post.id} className="bg-card p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <div className="flex items-center text-muted-foreground text-sm mb-2">
                 <span>{post.date}</span>
                 <span className="mx-2">|</span>
                 <span>Posted by: {post.author}</span>
                 <span className="mx-2">|</span>
                 <span>{post.comments} Comments</span>
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-2">{post.title}</h2>
-              <p className="text-gray-700 mb-4">{post.excerpt}</p>
+              <h2 className="text-2xl font-semibold text-foreground mb-2">{post.title}</h2>
+              <p className="text-muted-foreground mb-4">{post.excerpt}</p>
               <Link
                 to={`/blog/${post.id}`}
-                className="text-blue-600 font-semibold hover:underline"
+                className="text-primary font-semibold hover:underline"
               >
                 Read more
               </Link>

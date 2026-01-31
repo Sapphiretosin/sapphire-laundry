@@ -1,5 +1,6 @@
 // src/pages/Cart.jsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext"; // ✅ Correct import
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -93,7 +94,7 @@ Total: ₦${totalPrice.toLocaleString()}`;
               <td>${item.title || item.name}</td>
               <td>${item.quantity}</td>
               <td>₦${item.price.toLocaleString()}</td>
-              <td>₦${(item.price*item.quantity).toLocaleString()}</td>
+              <td>₦${(item.price * item.quantity).toLocaleString()}</td>
             </tr>`).join('')}
           </table>
           <div class="total">Total: ₦${totalPrice.toLocaleString()}</div>
@@ -114,7 +115,7 @@ Total: ₦${totalPrice.toLocaleString()}`;
 
   return (
     <div className="mt-24 px-6 md:px-20 py-12 min-h-screen">
-      <h1 className="text-3xl font-bold text-blue-700 mb-6">🛒 Your Cart</h1>
+      <h1 className="text-3xl font-bold text-primary mb-6">🛒 Your Cart</h1>
 
       {cart.length === 0 ? (
         <p className="text-gray-600 text-lg">Your cart is empty.</p>
@@ -155,13 +156,13 @@ Total: ₦${totalPrice.toLocaleString()}`;
           <div className="mt-6 flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="text-gray-700">
               <p className="font-semibold">Order Date: {orderDate.toDateString()}</p>
-              <p className="font-semibold text-blue-600">
+              <p className="font-semibold text-primary">
                 Expected Delivery: {deliveryDate.toDateString()}
               </p>
             </div>
 
             <div className="text-right mt-4 md:mt-0">
-              <h2 className="text-2xl font-bold text-blue-700">
+              <h2 className="text-2xl font-bold text-primary">
                 Total: ₦{totalPrice.toLocaleString()}
               </h2>
             </div>
@@ -174,15 +175,18 @@ Total: ₦${totalPrice.toLocaleString()}`;
               </div>
             )}
             <form onSubmit={handleSubmitOrder} className="space-y-4">
-              <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 border rounded"/>
-              <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 border rounded"/>
-              <input type="tel" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 border rounded"/>
-              <input type="text" name="address" placeholder="Your Address" value={formData.address} onChange={handleChange} className="w-full px-4 py-2 border rounded"/>
-              <textarea value={comment} placeholder="Comments or special instructions" onChange={(e)=>setComment(e.target.value)} className="w-full px-4 py-2 border rounded" rows={3}/>
-              <button type="submit" className="bg-green-600 text-white w-full py-3 rounded-full font-semibold hover:bg-green-700 transition">
-                Submit Order
-              </button>
-              <button type="button" onClick={printReceipt} className="bg-blue-600 text-white w-full py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+              <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 border rounded" />
+              <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 border rounded" />
+              <input type="tel" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 border rounded" />
+              <input type="text" name="address" placeholder="Your Address" value={formData.address} onChange={handleChange} className="w-full px-4 py-2 border rounded" />
+              <textarea value={comment} placeholder="Comments or special instructions" onChange={(e) => setComment(e.target.value)} className="w-full px-4 py-2 border rounded" rows={3} />
+              <Link
+                to="/checkout"
+                className="block text-center bg-primary text-primary-foreground w-full py-3 rounded-full font-semibold hover:bg-primary/90 transition shadow-lg"
+              >
+                Proceed to Checkout
+              </Link>
+              <button type="button" onClick={printReceipt} className="bg-secondary text-secondary-foreground w-full py-3 rounded-full font-semibold hover:bg-secondary/90 transition mt-2">
                 Print Receipt
               </button>
             </form>

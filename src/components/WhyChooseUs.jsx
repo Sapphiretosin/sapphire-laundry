@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section id="whyus" className="py-24 px-6 md:px-16 bg-gray-50 overflow-hidden">
+    <section id="whyus" className="py-24 px-6 md:px-16 bg-background overflow-hidden">
       {/* Section Header */}
       <div className="max-w-7xl mx-auto text-center mb-16">
         <motion.h2
@@ -129,7 +129,7 @@ const WhyChooseUs = () => {
       <div className="text-center mt-16">
         <motion.button
           whileHover={{ scale: 1.05 }}
-          className="bg-blue-600 text-white px-10 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-2xl"
+          className="bg-primary text-primary-foreground px-10 py-3 rounded-full font-semibold hover:bg-primary/90 transition shadow-lg hover:shadow-2xl"
         >
           Get Service Now
         </motion.button>

@@ -5,25 +5,25 @@ import { FaTshirt, FaBroom, FaHandsWash, FaSteam } from "react-icons/fa";
 const Prices = () => {
   const services = [
     {
-      icon: <FaHandsWash size={32} className="text-blue-600 transition-all duration-500" />,
+      icon: <FaHandsWash size={32} className="text-primary transition-all duration-500" />,
       title: "Laundry Service",
       price: "$2.50 / lb",
       description: "Professional wash & fold service with quality detergents.",
     },
     {
-      icon: <FaBroom size={32} className="text-blue-600 transition-all duration-500" />,
+      icon: <FaBroom size={32} className="text-primary transition-all duration-500" />,
       title: "Dry Cleaning",
       price: "$5.00 / item",
       description: "Gentle and eco-friendly cleaning for all fabric types.",
     },
     {
-      icon: <FaSteam size={32} className="text-blue-600 transition-all duration-500" />,
+      icon: <FaSteam size={32} className="text-primary transition-all duration-500" />,
       title: "Ironing Service",
       price: "$1.50 / item",
       description: "Get your clothes perfectly pressed and wrinkle-free.",
     },
     {
-      icon: <FaTshirt size={32} className="text-blue-600 transition-all duration-500" />,
+      icon: <FaTshirt size={32} className="text-primary transition-all duration-500" />,
       title: "Folding Service",
       price: "$1.00 / lb",
       description: "Neatly folded garments, ready to store or wear instantly.",
@@ -42,11 +42,11 @@ const Prices = () => {
   return (
     <section
       id="prices"
-      className="relative py-24 px-6 md:px-16 bg-gradient-to-b from-blue-50 via-white to-blue-50 overflow-hidden"
+      className="relative py-24 px-6 md:px-16 bg-gradient-to-b from-primary/5 via-background to-primary/5 overflow-hidden"
     >
       {/* Floating Bubbles */}
       <motion.div
-        className="absolute top-10 left-10 w-24 h-24 bg-blue-300/30 rounded-full blur-3xl animate-pulse"
+        className="absolute top-10 left-10 w-24 h-24 bg-primary/10 rounded-full blur-3xl animate-pulse"
         animate={{ y: [0, 15, 0] }}
         transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
       />
@@ -63,7 +63,7 @@ const Prices = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-blue-700 font-semibold mb-2 uppercase tracking-wide"
+          className="text-primary font-semibold mb-2 uppercase tracking-wide"
         >
           Affordable Prices
         </motion.h3>
@@ -116,12 +116,12 @@ const Prices = () => {
               {/* Content moves up on hover */}
               <div className="transform transition-all duration-500 group-hover:-translate-y-2 text-center">
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h4>
-                <p className="text-blue-600 font-bold text-lg mb-3">{service.price}</p>
+                <p className="text-primary font-bold text-lg mb-3">{service.price}</p>
                 <p className="text-gray-500 text-sm text-center leading-relaxed mb-5">
                   {service.description}
                 </p>
                 {/* Order Now Button */}
-                <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md">
+                <button className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition shadow-md">
                   Order Now
                 </button>
               </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import iphone from "../assets/app.jpg"; 
+import iphone from "../assets/app.jpg";
 
 const AppPromo = () => {
   return (
     <section
       id="app"
-      className="py-24 px-6 md:px-16 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+      className="py-24 px-6 md:px-16 bg-gradient-to-b from-primary/5 via-background to-primary/5"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left Content */}
@@ -17,7 +17,7 @@ const AppPromo = () => {
           viewport={{ once: true }}
           className="md:w-1/2"
         >
-          <h3 className="text-blue-700 font-semibold mb-2 uppercase tracking-wide">
+          <h3 className="text-primary font-semibold mb-2 uppercase tracking-wide">
             Laundry service for your business!
           </h3>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -31,7 +31,7 @@ const AppPromo = () => {
             covered.
           </p>
 
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+          <button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-semibold hover:bg-primary/90 transition">
             Download App
           </button>
         </motion.div>
@@ -53,7 +53,7 @@ const AppPromo = () => {
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
             />
             {/* Soft glow effect */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-300/20 rounded-full blur-2xl"></div>
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-300/20 rounded-full blur-2xl"></div>
           </div>
         </motion.div>

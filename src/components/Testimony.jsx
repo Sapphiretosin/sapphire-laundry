@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
@@ -38,7 +38,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="py-24 px-6 md:px-16 bg-gradient-to-b from-white to-blue-50 text-center">
+    <section className="py-24 px-6 md:px-16 bg-gradient-to-b from-background to-primary/5 text-center">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,9 +48,9 @@ const Testimonials = () => {
       >
         What Our Customers Say
       </motion.h2>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+      <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
         Real stories from people who trust{" "}
-        <span className="text-blue-600 font-semibold">Sapphire Laundry</span>.
+        <span className="text-primary font-semibold">Sapphire Laundry</span>.
       </p>
 
       <div className="relative max-w-3xl mx-auto">
@@ -61,7 +61,7 @@ const Testimonials = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl shadow-xl p-10 mx-auto max-w-2xl text-left"
+            className="bg-card rounded-3xl shadow-xl p-10 mx-auto max-w-2xl text-left border border-border"
           >
             <p className="text-gray-700 italic mb-6 text-lg leading-relaxed">
               “{testimonials[index].quote}”
@@ -70,7 +70,7 @@ const Testimonials = () => {
               <img
                 src={testimonials[index].image}
                 alt={testimonials[index].name}
-                className="w-14 h-14 rounded-full object-cover border-2 border-blue-100"
+                className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
               />
               <div>
                 <h4 className="font-semibold text-gray-900 text-lg">
@@ -88,9 +88,8 @@ const Testimonials = () => {
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                i === index ? "bg-blue-600 w-6" : "bg-blue-200"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${i === index ? "bg-primary w-6" : "bg-primary/20"
+                }`}
             ></button>
           ))}
         </div>

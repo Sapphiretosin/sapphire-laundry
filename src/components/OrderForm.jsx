@@ -77,7 +77,7 @@ Thank you for choosing Sapphire Laundry — we will get back to you soonest!`
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-3 mt-4 rounded-lg"
+        className="w-full bg-primary text-primary-foreground py-3 mt-4 rounded-lg hover:bg-primary/90 transition shadow-md"
       >
         Submit Order
       </button>

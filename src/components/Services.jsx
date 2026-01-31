@@ -6,7 +6,7 @@ import { MdIron } from "react-icons/md";
 import { useCart } from "../context/CartContext";
 
 // Sapphire-branded Images
-import laundry from "../assets/sapphire3.jpg"; 
+import laundry from "../assets/sapphire3.jpg";
 import drycleaning from "../assets/sapphire5.jpg";
 import ironing from "../assets/sapphire4.jpg";
 import delivery from "../assets/sapphire2.jpg";
@@ -19,42 +19,42 @@ const Services = () => {
   const services = [
     {
       image: laundry,
-      icon: <FaHandsWash size={35} className="text-blue-600" />,
+      icon: <FaHandsWash size={35} className="text-primary" />,
       title: "Laundry Service",
       price: 2500,
       description: "Top-quality washing and folding services for your clothes.",
     },
     {
       image: drycleaning,
-      icon: <FaBroom size={35} className="text-blue-600" />,
+      icon: <FaBroom size={35} className="text-primary" />,
       title: "Dry Cleaning",
       price: 3000,
       description: "Eco-friendly dry cleaning keeping your garments spotless.",
     },
     {
       image: ironing,
-      icon: <MdIron size={35} className="text-blue-600" />,
+      icon: <MdIron size={35} className="text-primary" />,
       title: "Ironing Service",
       price: 1500,
       description: "Crisp professional finish for all your outfits.",
     },
     {
       image: delivery,
-      icon: <FaTruckPickup size={35} className="text-blue-600" />,
+      icon: <FaTruckPickup size={35} className="text-primary" />,
       title: "Pickup & Delivery",
       price: 500,
       description: "Free pickup & delivery, saving you time.",
     },
     {
       image: commercial,
-      icon: <FaHotel size={35} className="text-blue-600" />,
+      icon: <FaHotel size={35} className="text-primary" />,
       title: "Commercial Laundry",
       price: 10000,
       description: "Reliable laundry for hotels, gyms, restaurants, offices.",
     },
     {
       image: folding,
-      icon: <FaTshirt size={35} className="text-blue-600" />,
+      icon: <FaTshirt size={35} className="text-primary" />,
       title: "Folding Service",
       price: 1000,
       description: "Neatly folded laundry ready to store or wear.",
@@ -71,7 +71,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 px-6 md:px-16 bg-gray-50 overflow-hidden">
+    <section id="services" className="py-24 px-6 md:px-16 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -117,10 +117,10 @@ const Services = () => {
               <div className="mb-4 flex justify-center">{service.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h3>
               <p className="text-gray-600 mb-2">{service.description}</p>
-              <p className="font-bold text-blue-700 mb-4">₦{service.price.toLocaleString()}</p>
+              <p className="font-bold text-primary mb-4">₦{service.price.toLocaleString()}</p>
               <button
                 onClick={() => addToCart({ name: service.title, price: service.price })}
-                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-full hover:bg-primary/90 transition"
               >
                 Order Now
               </button>

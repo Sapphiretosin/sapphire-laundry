@@ -27,7 +27,7 @@ const fadeUp = {
 
 const DeliveryServices = () => {
   return (
-    <section className="relative py-24 px-6 md:px-16 bg-gradient-to-r from-blue-700 to-blue-500 text-white overflow-hidden">
+    <section className="relative py-24 px-6 md:px-16 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground overflow-hidden">
       {/* Animated background bubbles */}
       <motion.div
         className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"
@@ -35,7 +35,7 @@ const DeliveryServices = () => {
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-52 h-52 bg-blue-300/20 rounded-full blur-3xl"
+        className="absolute bottom-0 right-0 w-52 h-52 bg-background/20 rounded-full blur-3xl"
         animate={{ y: [0, -25, 0], x: [0, -15, 0] }}
         transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
       />
@@ -55,7 +55,7 @@ const DeliveryServices = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-blue-100 mb-12 text-lg md:text-xl"
+          className="text-primary-foreground/80 mb-12 text-lg md:text-xl"
         >
           From jets to bicycles, we ensure your laundry is delivered safely and on time.
         </motion.p>
@@ -71,7 +71,7 @@ const DeliveryServices = () => {
               variants={fadeUp}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="bg-white/20 rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg cursor-pointer hover:shadow-2xl transition"
+              className="bg-primary-foreground/10 rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg cursor-pointer hover:shadow-2xl transition border border-primary-foreground/20"
             >
               <img
                 src={vehicle.image}

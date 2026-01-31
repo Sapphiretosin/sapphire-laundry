@@ -4,17 +4,17 @@ import { FaLeaf, FaTruck, FaDollarSign, FaPhoneAlt, FaStar } from "react-icons/f
 
 const Experience = () => {
   return (
-    <section className="bg-white py-16 relative overflow-hidden">
+    <section className="bg-background py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12">
 
         {/* Content Side */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <p className="text-lg text-blue-600 font-semibold uppercase tracking-wide">
+          <p className="text-lg text-primary font-semibold uppercase tracking-wide">
             4 Years of Experience
           </p>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-snug mt-2">
-            We Are <span className="text-blue-600">Passionate</span> About Laundry
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-snug mt-2">
+            We Are <span className="text-primary">Passionate</span> About Laundry
           </h2>
 
           <p className="mt-4 text-gray-600 leading-relaxed">
@@ -29,27 +29,27 @@ const Experience = () => {
           {/* Features Section */}
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex items-center gap-3 justify-center lg:justify-start">
-              <FaTruck className="text-blue-600 text-2xl" />
+              <FaTruck className="text-primary transition-colors" />
               <span className="text-gray-800 font-medium">Free Collection & Delivery</span>
             </div>
 
             <div className="flex items-center gap-3 justify-center lg:justify-start">
-              <FaDollarSign className="text-blue-600 text-2xl" />
+              <FaDollarSign className="text-primary transition-colors" />
               <span className="text-gray-800 font-medium">Affordable Prices</span>
             </div>
 
             <div className="flex items-center gap-3 justify-center lg:justify-start">
-              <FaStar className="text-blue-600 text-2xl" />
+              <FaStar className="text-primary transition-colors" />
               <span className="text-gray-800 font-medium">Best Quality</span>
             </div>
 
             <div className="flex items-center gap-3 justify-center lg:justify-start">
-              <FaLeaf className="text-blue-600 text-2xl" />
+              <FaLeaf className="text-primary transition-colors" />
               <span className="text-gray-800 font-medium">Eco-Friendly</span>
             </div>
 
             <div className="flex items-center gap-3 justify-center lg:justify-start sm:col-span-2">
-              <FaPhoneAlt className="text-blue-600 text-2xl" />
+              <FaPhoneAlt className="text-primary transition-colors" />
               <span className="text-gray-800 font-medium">
                 Call for Quality Services:
                 <br />
@@ -59,8 +59,8 @@ const Experience = () => {
           </div>
 
           {/* Flowing marquee text */}
-          <div className="mt-10 overflow-hidden whitespace-nowrap border-t border-blue-100 pt-4">
-            <div className="animate-marquee text-blue-600 font-semibold text-lg tracking-wide">
+          <div className="mt-10 overflow-hidden whitespace-nowrap border-t border-primary/10 pt-4">
+            <div className="animate-marquee text-primary font-semibold text-lg tracking-wide">
               100% Customer Satisfaction • Pay Online in Seconds • Eco-Friendly • Save Time and Money • Best Quality • Affordable Prices • Free Pickup & Delivery • 100% Customer Satisfaction •
             </div>
           </div>

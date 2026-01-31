@@ -25,7 +25,7 @@ const ServicesPage = () => {
   const { addToCart } = useCart(); // ✅ always use your custom hook
 
   return (
-    <div className="bg-gray-50 min-h-screen py-24 px-6 md:px-16">
+    <div className="bg-background min-h-screen py-24 px-6 md:px-16">
       <div className="max-w-7xl mx-auto mb-20 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Commercial Services</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -46,10 +46,10 @@ const ServicesPage = () => {
               <img src={service.image} alt={service.title} className="w-full h-40 object-cover rounded-xl mb-4" />
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
-              <p className="text-blue-700 font-bold mb-4">₦{service.price.toLocaleString()}</p>
+              <p className="text-primary font-bold mb-4">₦{service.price.toLocaleString()}</p>
               <button
                 onClick={() => addToCart({ title: service.title, price: service.price })}
-                className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition shadow-md"
               >
                 Order Now
               </button>

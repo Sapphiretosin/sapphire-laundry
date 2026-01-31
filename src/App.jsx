@@ -24,6 +24,9 @@ import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import SuperAdminDashboard from "./pages/SuperAdminDashboard";
+import OutletDashboard from "./pages/OutletDashboard";
+import OutletRegistration from "./pages/OutletRegistration";
 
 
 import { CartProvider } from "./context/CartContext";
@@ -31,6 +34,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RequireAuth from "./components/RequireAuth";
+import RequireRole from "./components/RequireRole";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -98,12 +102,23 @@ function App() {
           <Route path="/commercial-services" element={<CommercialServices />} />
           <Route path="/orderform" element={<OrderForm />} />
 
-          {/* ADMIN */}
+          {/* ADMIN & MULTI-TENANT */}
           <Route path="/admin" element={
             <RequireAuth>
               <AdminDashboard />
             </RequireAuth>
           } />
+          <Route path="/super-admin" element={
+            <RequireRole role="superadmin">
+              <SuperAdminDashboard />
+            </RequireRole>
+          } />
+          <Route path="/outlet-dashboard" element={
+            <RequireRole role="outlet_owner">
+              <OutletDashboard />
+            </RequireRole>
+          } />
+          <Route path="/outlet-register" element={<OutletRegistration />} />
 
           {/* CHECKOUT PAGE */}
           <Route path="/checkout" element={<CheckoutPage />} />

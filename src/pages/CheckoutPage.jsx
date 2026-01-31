@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
+import { useCart } from "../context/CartContext";
+import LocationPicker from "../components/LocationPicker";
+import axios from "axios";
 
-export default function CheckoutPage({ cart }) {
+export default function CheckoutPage() {
+  const { cart, clearCart } = useCart();
+  const [selectedOutlet, setSelectedOutlet] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,27 +49,28 @@ export default function CheckoutPage({ cart }) {
             cart,
             comment,
             paymentMethod: "Paystack",
+            outletId: selectedOutlet?._id || selectedOutlet?.id,
           };
 
-          const res = await fetch(
+          const token = localStorage.getItem("token");
+          const res = await axios.post(
             "http://localhost:5000/api/payment/verify-paystack",
             {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                reference: response.reference,
-                orderDetails,
-              }),
+              reference: response.reference,
+              orderDetails,
+            },
+            {
+              headers: { Authorization: `Bearer ${token}` }
             }
           );
 
-          const data = await res.json();
-          if (res.ok) {
+          if (res.data.success) {
             alert("Payment successful & order saved!");
             setSubmitted(true);
+            clearCart();
             resetForm();
           } else {
-            alert("Payment verification failed: " + data.message);
+            alert("Payment verification failed: " + res.data.message);
           }
         } catch (err) {
           alert("Error verifying payment: " + err.message);
@@ -83,6 +89,11 @@ export default function CheckoutPage({ cart }) {
 
     if (!formData.name || !formData.email || !formData.phone || !formData.address) {
       alert("Please fill all fields!");
+      return;
+    }
+
+    if (!selectedOutlet) {
+      alert("Please select a nearby outlet on the map first!");
       return;
     }
 
@@ -125,8 +136,22 @@ ACCOUNT NUMBER: 1234567890`;
   };
 
   return (
-    <div className="checkout-container max-w-3xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4">Checkout</h2>
+    <div className="checkout-container max-w-4xl mx-auto p-6 pt-32 pb-24">
+      <h2 className="text-4xl font-bold mb-8 text-primary">Checkout</h2>
+
+      <div className="mb-12 bg-card p-6 rounded-3xl border border-border shadow-md">
+        <h3 className="text-xl font-bold mb-4">1. Select Nearby Outlet</h3>
+        <LocationPicker
+          onOutletChange={(outlet) => setSelectedOutlet(outlet)}
+        />
+        {selectedOutlet && (
+          <p className="mt-4 text-green-600 font-bold">
+            Selected: {selectedOutlet.name}
+          </p>
+        )}
+      </div>
+
+      <h3 className="text-xl font-bold mb-4">2. Your Details</h3>
 
       {submitted && (
         <div className="bg-green-100 text-green-800 p-4 mb-4 rounded">
@@ -209,7 +234,7 @@ ACCOUNT NUMBER: 1234567890`;
 
         <button
           type="submit"
-          className="bg-blue-600 text-white w-full py-3 rounded hover:bg-blue-700 mt-4"
+          className="bg-primary text-primary-foreground w-full py-3 rounded hover:bg-primary/90 mt-4 transition shadow-md"
         >
           Submit Order
         </button>

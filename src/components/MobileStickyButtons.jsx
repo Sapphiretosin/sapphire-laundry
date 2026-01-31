@@ -28,11 +28,11 @@ const MobileStickyButtons = () => {
       {/* Cart Button */}
       <button
         onClick={handleCartClick}
-        className="bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center relative hover:bg-blue-700 transition"
+        className="bg-primary text-primary-foreground p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center relative hover:bg-primary/90 transition"
       >
         <FaShoppingCart size={24} />
         {cart.length > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-2 py-0.5">
+          <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs font-bold rounded-full px-2 py-0.5">
             {cart.length}
           </span>
         )}
@@ -41,7 +41,7 @@ const MobileStickyButtons = () => {
       {/* Schedule Pickup Button */}
       <button
         onClick={handlePickupClick}
-        className="bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-green-700 transition"
+        className="bg-secondary text-secondary-foreground p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-secondary/90 transition"
       >
         <FaTruck size={24} />
       </button>

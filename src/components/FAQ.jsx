@@ -32,9 +32,9 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-24 px-6 md:px-16 bg-white text-gray-800">
+    <section id="faq" className="py-24 px-6 md:px-16 bg-background text-foreground">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-blue-700 mb-10">
+        <h2 className="text-4xl font-bold text-primary mb-10">
           Questions / Answers
         </h2>
         <p className="text-gray-600 mb-10">
@@ -56,9 +56,9 @@ const FAQSection = () => {
                 {faq.question}
               </span>
               {activeIndex === index ? (
-                <FaChevronUp className="text-blue-600" />
+                <FaChevronUp className="text-primary" />
               ) : (
-                <FaChevronDown className="text-blue-600" />
+                <FaChevronDown className="text-primary" />
               )}
             </button>
 

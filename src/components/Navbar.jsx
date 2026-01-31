@@ -86,15 +86,15 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav className="bg-white shadow-md fixed w-full top-0 z-50">
-        <div className="flex justify-between items-center px-6 py-4">
+        <div className="flex justify-between items-center px-4 md:px-6 py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2 md:gap-3">
             <img
               src={sapphire11}
               alt="Sapphire Laundry Logo"
-              className="w-14 h-14 object-cover rounded-full drop-shadow-md"
+              className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full drop-shadow-md"
             />
-            <span className="text-2xl font-extrabold text-blue-700 tracking-wide">
+            <span className="text-lg md:text-2xl font-extrabold text-primary tracking-wide">
               Sapphire Laundry
             </span>
           </Link>
@@ -105,22 +105,42 @@ const Navbar = () => {
               <li key={idx}>
                 <Link
                   to={link.to}
-                  className={`${
-                    isActive(link.to)
-                      ? "text-blue-600 font-semibold"
-                      : "text-gray-800"
-                  } hover:text-blue-600 transition`}
+                  className={`${isActive(link.to)
+                    ? "text-primary font-semibold"
+                    : "text-foreground"
+                    } hover:text-primary transition`}
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
 
+            {user?.role === "superadmin" && (
+              <li>
+                <Link to="/super-admin" className="text-primary font-bold hover:underline">Super Admin</Link>
+              </li>
+            )}
+
+            {user?.role === "outlet_owner" && (
+              <li>
+                <Link to="/outlet-dashboard" className="text-primary font-bold hover:underline">Outlet Panel</Link>
+              </li>
+            )}
+
+            {!user && (
+              <li>
+                <Link to="/outlet-register" className="text-muted-foreground hover:text-primary transition text-sm">Become a Partner</Link>
+              </li>
+            )}
+
             {/* Make Payment Button */}
             <li>
               <Link
                 to="/payment"
-                className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-yellow-600 transition"
+                className={`${isActive("/payment")
+                  ? "text-primary font-semibold"
+                  : "text-foreground"
+                  } hover:text-primary transition`}
               >
                 Make Payment
               </Link>
@@ -130,7 +150,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={toggleAuth}
-                className="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition"
+                className="flex items-center gap-2 text-foreground hover:text-primary transition"
               >
                 <FaUser /> {user ? user.name || user.username : "Account"}
               </button>
@@ -156,9 +176,8 @@ const Navbar = () => {
                   <Link
                     to={link.to}
                     onClick={() => setMenuOpen(false)}
-                    className={`block text-gray-800 hover:text-blue-600 transition ${
-                      isActive(link.to) ? "text-blue-600 font-semibold" : ""
-                    }`}
+                    className={`block text-foreground hover:text-primary transition ${isActive(link.to) ? "text-primary font-semibold" : ""
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -170,7 +189,8 @@ const Navbar = () => {
                 <Link
                   to="/payment"
                   onClick={() => setMenuOpen(false)}
-                  className="block text-gray-800 hover:text-blue-600 transition"
+                  className={`block text-foreground hover:text-primary transition ${isActive("/payment") ? "text-primary font-semibold" : ""
+                    }`}
                 >
                   Make Payment
                 </Link>
@@ -180,7 +200,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={toggleAuth}
-                  className="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-foreground hover:text-primary transition"
                 >
                   <FaUser /> {user ? user.name || user.username : "Account"}
                 </button>
@@ -200,17 +220,15 @@ const Navbar = () => {
           >
             <div className="flex justify-between mb-4">
               <button
-                className={`px-4 py-2 rounded ${
-                  showLogin ? "bg-blue-600 text-white" : "bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded ${showLogin ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                  }`}
                 onClick={() => setShowLogin(true)}
               >
                 Log In
               </button>
               <button
-                className={`px-4 py-2 rounded ${
-                  !showLogin ? "bg-blue-600 text-white" : "bg-gray-100"
-                }`}
+                className={`px-4 py-2 rounded ${!showLogin ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                  }`}
                 onClick={() => setShowLogin(false)}
               >
                 Register
@@ -247,7 +265,7 @@ const Navbar = () => {
                       Remember Me
                     </label>
                   </div>
-                  <button className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                  <button className="bg-primary text-primary-foreground py-2 rounded hover:bg-primary/90 transition">
                     Log In
                   </button>
                 </form>
@@ -288,7 +306,7 @@ const Navbar = () => {
                       Remember Me
                     </label>
                   </div>
-                  <button className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                  <button className="bg-primary text-primary-foreground py-2 rounded hover:bg-primary/90 transition">
                     Create Account
                   </button>
                 </form>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useCart } from "../context/CartContext"; // ✅ Use the hook
+import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
+import LocationPicker from "../components/LocationPicker";
 
 const SchedulePickup = () => {
   const { cart, clearCart } = useCart(); // ✅ useCart hook instead of useContext(CartContext)
 
   const [location, setLocation] = useState({ lat: null, lng: null });
-  const [loadingLocation, setLoadingLocation] = useState(true);
+  const [selectedOutlet, setSelectedOutlet] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -17,23 +17,6 @@ const SchedulePickup = () => {
     deliveryDate: "",
     comment: "",
   });
-
-  // Get user current location
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        });
-        setLoadingLocation(false);
-      },
-      (err) => {
-        console.log("Location error:", err);
-        setLoadingLocation(false);
-      }
-    );
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,6 +42,8 @@ Email: ${formData.email}
 Phone: ${formData.phone}
 Address: ${formData.address}
 
+🏢 Assigned Outlet: ${selectedOutlet?.name || "None Selected"}
+
 📍 Location:
 Lat: ${location.lat}
 Lng: ${location.lng}
@@ -82,18 +67,18 @@ Comment: ${formData.comment || "None"}
   };
 
   return (
-    <div className="mt-24 px-6 md:px-20 py-12 min-h-screen bg-gray-50">
-      <h1 className="text-3xl font-bold text-blue-700 mb-8 text-center">
+    <div className="mt-24 px-6 md:px-20 py-12 min-h-screen bg-background">
+      <h1 className="text-3xl font-bold text-primary mb-8 text-center">
         Schedule a Pickup
       </h1>
 
-      {loadingLocation ? (
-        <p className="text-center">Fetching your location…</p>
-      ) : (
-        <p className="text-center text-green-600">
-          Location captured successfully!
-        </p>
-      )}
+      <div className="mb-12">
+        <h2 className="text-xl font-bold text-center mb-6">Choose Your Preferred Sapphire Outlet</h2>
+        <LocationPicker
+          onPositionChange={(pos) => setLocation({ lat: pos[0], lng: pos[1] })}
+          onOutletChange={(outlet) => setSelectedOutlet(outlet)}
+        />
+      </div>
 
       <motion.form
         onSubmit={handleSubmit}
@@ -165,7 +150,7 @@ Comment: ${formData.comment || "None"}
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-8 py-3 rounded-full w-full hover:bg-blue-700 transition"
+          className="bg-primary text-primary-foreground px-8 py-3 rounded-full w-full hover:bg-primary/90 transition shadow-lg"
         >
           Order Now
         </button>

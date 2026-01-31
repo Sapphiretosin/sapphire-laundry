@@ -36,16 +36,7 @@ const outletIcon = new L.Icon({
   iconAnchor: [17, 34],
 });
 
-// Outlets
-const outlets = [
-  { id: 1, name: "Sapphire Laundry Ado Ekiti HQ", coords: [7.6190, 5.2050] },
-  { id: 2, name: "Sapphire Laundry Ibadan", coords: [7.3775, 3.9470] },
-  { id: 3, name: "Sapphire Laundry Abeokuta", coords: [7.1600, 3.3450] },
-  { id: 4, name: "Sapphire Laundry Oyo", coords: [7.8500, 3.9330] },
-  { id: 5, name: "Sapphire Laundry Warri", coords: [5.5167, 5.7500] },
-  { id: 6, name: "Sapphire Laundry Lagos Island", coords: [6.4541, 3.3942] },
-  { id: 7, name: "Sapphire Laundry Abuja", coords: [9.0579, 7.4951] },
-];
+
 
 // Distance calculation (Haversine)
 const getDistance = (from, to) => {
@@ -55,8 +46,8 @@ const getDistance = (from, to) => {
   const a =
     Math.sin(dLat / 2) ** 2 +
     Math.cos((from[0] * Math.PI) / 180) *
-      Math.cos((to[0] * Math.PI) / 180) *
-      Math.sin(dLon / 2) ** 2;
+    Math.cos((to[0] * Math.PI) / 180) *
+    Math.sin(dLon / 2) ** 2;
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 };
@@ -98,13 +89,36 @@ function FlyTo({ coords }) {
   return null;
 }
 
-const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) => {
+const LocationPicker = ({ onPositionChange, onOutletChange, initialPosition, radiusKm = 10 }) => {
   const [position, setPosition] = useState(initialPosition || null);
   const [nearestOutlet, setNearestOutlet] = useState(null);
   const [visibleOutlets, setVisibleOutlets] = useState([]);
+  const [outlets, setOutlets] = useState([]); // Dynamic outlets
   const [flyToCoords, setFlyToCoords] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [address, setAddress] = useState("");
+
+  // Fetch Outlets from Backend
+  useEffect(() => {
+    const fetchOutlets = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/outlets");
+        const json = await response.json();
+        if (json.success) {
+          // Normalize backend data to match expected frontend format
+          const formatted = json.data.map(o => ({
+            id: o._id,
+            name: o.name,
+            coords: [o.location.lat, o.location.lng]
+          }));
+          setOutlets(formatted);
+        }
+      } catch (err) {
+        console.error("Failed to fetch outlets:", err);
+      }
+    };
+    fetchOutlets();
+  }, []);
 
   // Get user location
   useEffect(() => {
@@ -148,7 +162,7 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
 
   // Update nearest and visible outlets
   useEffect(() => {
-    if (position) {
+    if (position && outlets.length > 0) {
       const nearest = outlets.reduce((prev, curr) => {
         const distPrev = getDistance(position, prev.coords);
         const distCurr = getDistance(position, curr.coords);
@@ -162,8 +176,9 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
       setVisibleOutlets(visible);
 
       setFlyToCoords(nearest.coords);
+      if (onOutletChange) onOutletChange(nearest);
     }
-  }, [position, radiusKm]);
+  }, [position, radiusKm, outlets]);
 
   useEffect(() => {
     if (onPositionChange && position) onPositionChange(position);
@@ -215,7 +230,7 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
             href={`https://www.google.com/maps/dir/?api=1&destination=${nearestOutlet.coords[0]},${nearestOutlet.coords[1]}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-block bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition"
+            className="mt-2 inline-block bg-primary text-primary-foreground px-3 py-2 rounded hover:bg-primary/90 transition"
           >
             Get Directions
           </a>
@@ -253,7 +268,7 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
           />
           <button
             onClick={handleSearch}
-            className="bg-blue-600 text-white px-3 rounded hover:bg-blue-700 transition"
+            className="bg-primary text-primary-foreground px-3 rounded hover:bg-primary/90 transition"
           >
             Search
           </button>
@@ -283,8 +298,8 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
                   color === "green"
                     ? "https://cdn-icons-png.flaticon.com/512/190/190411.png"
                     : color === "orange"
-                    ? "https://cdn-icons-png.flaticon.com/512/190/190406.png"
-                    : "https://cdn-icons-png.flaticon.com/512/190/190422.png",
+                      ? "https://cdn-icons-png.flaticon.com/512/190/190406.png"
+                      : "https://cdn-icons-png.flaticon.com/512/190/190422.png",
                 iconSize: [34, 34],
                 iconAnchor: [17, 34],
               });
@@ -299,11 +314,11 @@ const LocationPicker = ({ onPositionChange, initialPosition, radiusKm = 10 }) =>
 
             {position && nearestOutlet && (
               <>
-                <Polyline positions={[position, nearestOutlet.coords]} color="blue" />
+                <Polyline positions={[position, nearestOutlet.coords]} color="var(--primary)" />
                 <Circle
                   center={nearestOutlet.coords}
                   radius={5000}
-                  pathOptions={{ color: "blue", fillColor: "blue", fillOpacity: 0.2 }}
+                  pathOptions={{ color: "var(--primary)", fillColor: "var(--primary)", fillOpacity: 0.2 }}
                 />
                 <FlyTo coords={flyToCoords} />
               </>

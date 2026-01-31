@@ -88,7 +88,7 @@ const CommercialServices = () => {
   };
 
   return (
-    <section className="py-24 px-6 md:px-16 bg-gray-50">
+    <section className="py-24 px-6 md:px-16 bg-background">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Commercial Services</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -127,7 +127,7 @@ const CommercialServices = () => {
               <p className="text-white font-bold mb-2">₦{service.price}</p>
               <button
                 onClick={() => handleAddToCart(service)}
-                className="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-semibold hover:bg-primary/90 transition shadow-md"
               >
                 Order Now
               </button>
@@ -137,7 +137,7 @@ const CommercialServices = () => {
       </div>
 
       {/* Customer Info & Submit */}
-      <div className="max-w-3xl mx-auto mt-16 bg-white p-8 rounded-xl shadow-lg">
+      <div className="max-w-3xl mx-auto mt-16 bg-card p-8 rounded-xl shadow-lg border border-border text-foreground">
         <h3 className="text-2xl font-bold mb-6 text-center">Confirm Your Order</h3>
 
         {submitted && (
@@ -193,7 +193,7 @@ const CommercialServices = () => {
 
           <button
             type="submit"
-            className="bg-green-600 text-white w-full py-3 rounded-full font-semibold hover:bg-green-700 transition"
+            className="bg-primary text-primary-foreground w-full py-3 rounded-full font-semibold hover:bg-primary/90 transition shadow-lg"
           >
             Submit Order
           </button>
